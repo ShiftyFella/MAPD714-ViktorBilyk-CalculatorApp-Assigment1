@@ -1,6 +1,18 @@
 //
 //  AppDelegate.swift
-//  ViktorBilyk-AppCalculator-MAPD714
+//
+//  Author: Viktor Bilyk
+//  Student ID: 300964200
+//
+//  Date: September 26, 2017
+//
+//  Version: 1.0
+//
+//  Supported Device: Universal, any Ipad or Iphone with iOS ver. 10.3
+//  Supported Orientations: Portrait and Landscape
+//
+//  Description: Calculator application that can do multiplication, division, plus, minus,
+//                      square root and rising to power of 2 operations
 //
 //  Created by Viktor Bilyk on 2017-09-26.
 //  Copyright © 2017 Shifty Land LLC. All rights reserved.
