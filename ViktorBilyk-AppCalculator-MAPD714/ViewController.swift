@@ -1,6 +1,6 @@
 //
 //  Assigment 1 Calculator App
-//  Version: 0.7 NumPad, dot, AC logic created
+//  Version: 0.8 Base Calculator logic and handleing
 //
 //  Created by Viktor Bilyk on 2017-09-26.
 //  Copyright © 2017 Shifty Land LLC. All rights reserved.
@@ -23,6 +23,7 @@ class ViewController: UIViewController {
     //Calculator variables
     var firstOperand:Double = 0 // left side of calculations
     var secondOperand:Double = 0 // right side of calcultions
+    var onScreenNumber:Double = 0 //number on screen
     var calcResult:Double = 0 // result of calculations
     var isMath:Bool = false // is Math operation pressed
     var currentMathOperation:Int = 0 // selected ID of operation
@@ -32,17 +33,17 @@ class ViewController: UIViewController {
     @IBOutlet weak var calcResultLabel: UILabel! //displays calcResult on UI
     
     //function to do basic calculations
-    func calculations () -> Double {
+    func calculations (operandA:Double, operandB:Double) -> Double {
         var tempResult:Double = 0
         switch currentMathOperation {
         case 11:
-            tempResult = firstOperand + secondOperand
+            tempResult = operandA + operandB
         case 12:
-            tempResult = firstOperand - secondOperand
+            tempResult = operandA - operandB
         case 13:
-            tempResult = firstOperand * secondOperand
+            tempResult = operandA * operandB
         case 14:
-            tempResult = firstOperand / secondOperand
+            tempResult = operandA / operandB
         default: break
         }
         return tempResult
@@ -64,10 +65,31 @@ class ViewController: UIViewController {
                 calcResultLabel.text = calcResultLabel.text! + String(sender.tag-1)
             }
         }
+        onScreenNumber = Double(calcResultLabel.text!)!
     }
     
     //Operations button handler
     @IBAction func operationsButtonClick(_ sender: UIButton) {
+        //
+        if isMath { //are we in process of calculation chain
+            switch sender.tag {
+            case 11, 12, 13, 14:
+                    secondOperand = onScreenNumber
+                    calcResult = calculations(operandA: firstOperand, operandB: secondOperand)
+                    firstOperand = calcResult
+                    currentMathOperation = sender.tag
+                    calcResultLabel.text = String(calcResult)
+                    isDot = false
+            default:
+                calcResultLabel.text = "Error"
+            }
+        }
+        else {
+            firstOperand = Double(calcResultLabel.text!)!
+            currentMathOperation = sender.tag
+            isDot = false
+            isMath = true
+        }
     }
     
     //PlusMinus operation
@@ -85,6 +107,12 @@ class ViewController: UIViewController {
     
     //Equals button pressed
     @IBAction func equalsPress(_ sender: UIButton) {
+        if isMath { //check if there is calculations to be done
+            calcResult = calculations(operandA: firstOperand, operandB: onScreenNumber)
+            firstOperand = calcResult
+            calcResultLabel.text = String(calcResult)
+            isDot = false
+        }
     }
     
     //All Clear button pressed
