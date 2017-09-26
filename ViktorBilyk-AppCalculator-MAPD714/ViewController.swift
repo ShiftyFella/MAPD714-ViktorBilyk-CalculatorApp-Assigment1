@@ -1,6 +1,6 @@
 //
 //  Assigment 1 Calculator App
-//  Version: 0.8 Base Calculator logic and handleing
+//  Version: 0.9 Advaced Calculations, refactoring
 //
 //  Created by Viktor Bilyk on 2017-09-26.
 //  Copyright © 2017 Shifty Land LLC. All rights reserved.
@@ -28,6 +28,7 @@ class ViewController: UIViewController {
     var isMath:Bool = false // is Math operation pressed
     var currentMathOperation:Int = 0 // selected ID of operation
     var isDot:Bool = false //is Dot pressed
+    var isEqual:Bool = false //is equals pressed
     
     //Label outlet
     @IBOutlet weak var calcResultLabel: UILabel! //displays calcResult on UI
@@ -44,6 +45,10 @@ class ViewController: UIViewController {
             tempResult = operandA * operandB
         case 14:
             tempResult = operandA / operandB
+        case 15:
+            tempResult = pow(operandA, 2)
+        case 16:
+            tempResult = sqrt(operandA)
         default: break
         }
         return tempResult
@@ -73,13 +78,37 @@ class ViewController: UIViewController {
         //
         if isMath { //are we in process of calculation chain
             switch sender.tag {
-            case 11, 12, 13, 14:
+            case 11, 12, 13, 14: //Adding, Multiplications, Division, Minus operations
+                if !isEqual {// if equals not pressed continue chain otherwise restar calculations chain and wait for 2nd number
                     secondOperand = onScreenNumber
                     calcResult = calculations(operandA: firstOperand, operandB: secondOperand)
                     firstOperand = calcResult
                     currentMathOperation = sender.tag
                     calcResultLabel.text = String(calcResult)
                     isDot = false
+                }
+                else {
+                    firstOperand = Double(calcResultLabel.text!)!
+                    currentMathOperation = sender.tag
+                    isDot = false
+                }
+            case 15, 16: //Square root and power to two operations
+                if !isEqual {//if equals not pressed continue chain otherwise calculate and show result
+                    secondOperand = onScreenNumber
+                    calcResult = calculations(operandA: firstOperand, operandB: secondOperand)
+                    firstOperand = calcResult
+                    currentMathOperation = sender.tag
+                    calcResultLabel.text = String(calcResult)
+                    isDot = false
+                }
+                else {
+                    firstOperand = Double(calcResultLabel.text!)!
+                    currentMathOperation = sender.tag
+                    calcResult = calculations(operandA: firstOperand, operandB: secondOperand)
+                    firstOperand = calcResult
+                    calcResultLabel.text = String(calcResult)
+                    isDot = false
+                }
             default:
                 calcResultLabel.text = "Error"
             }
@@ -112,6 +141,7 @@ class ViewController: UIViewController {
             firstOperand = calcResult
             calcResultLabel.text = String(calcResult)
             isDot = false
+            isEqual = true
         }
     }
     
@@ -123,11 +153,13 @@ class ViewController: UIViewController {
         //reset all flags
         isMath = false
         isDot = false
+        isEqual = false
         
         //reset calculations
         calcResult = 0
         firstOperand = 0
         secondOperand = 0
+        onScreenNumber = 0
         
         //reset state of calc
         currentMathOperation = 0

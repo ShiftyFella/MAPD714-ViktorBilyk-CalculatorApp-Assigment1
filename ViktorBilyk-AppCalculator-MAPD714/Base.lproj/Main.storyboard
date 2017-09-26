@@ -130,6 +130,9 @@
                                                         <state key="normal" title="x2">
                                                             <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                         </state>
+                                                        <connections>
+                                                            <action selector="operationsButtonClick:" destination="BYZ-38-t0r" eventType="touchUpInside" id="y6c-EP-J0n"/>
+                                                        </connections>
                                                     </button>
                                                     <button opaque="NO" tag="16" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SHa-8S-bzb">
                                                         <rect key="frame" x="283.5" y="0.0" width="91.5" height="88"/>
@@ -138,6 +141,9 @@
                                                         <state key="normal" title="√x">
                                                             <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                         </state>
+                                                        <connections>
+                                                            <action selector="operationsButtonClick:" destination="BYZ-38-t0r" eventType="touchUpInside" id="8CZ-bL-EIw"/>
+                                                        </connections>
                                                     </button>
                                                 </subviews>
                                             </stackView>
