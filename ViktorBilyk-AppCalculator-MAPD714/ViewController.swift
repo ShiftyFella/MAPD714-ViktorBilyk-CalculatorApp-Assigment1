@@ -1,6 +1,6 @@
 //
 //  Assigment 1 Calculator App
-//  Version: 0.4 Event Handlers for NumPad and Operations Created
+//  Version: 0.5 Event Handlers for PlusMinus, Clear
 //
 //  Created by Viktor Bilyk on 2017-09-26.
 //  Copyright © 2017 Shifty Land LLC. All rights reserved.
@@ -51,6 +51,15 @@ class ViewController: UIViewController {
     //Operations button handler
     @IBAction func operationsButtonClick(_ sender: UIButton) {
     }
+    
+    //PlusMinus operation
+    @IBAction func plusMinusSwitch(_ sender: UIButton) {
+    }
+    
+    //All Clear button pressed
+    @IBAction func clearAllCalculator(_ sender: UIButton) {
+    }
+    
     
 }
 
