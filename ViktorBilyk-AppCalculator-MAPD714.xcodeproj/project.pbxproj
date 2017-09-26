@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 46;
+	objectVersion = 48;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -96,13 +96,12 @@
 				TargetAttributes = {
 					778AC6691F7A9C81002B0DBA = {
 						CreatedOnToolsVersion = 8.3.2;
-						DevelopmentTeam = 2BULHRS882;
 						ProvisioningStyle = Automatic;
 					};
 				};
 			};
 			buildConfigurationList = 778AC6651F7A9C81002B0DBA /* Build configuration list for PBXProject "ViktorBilyk-AppCalculator-MAPD714" */;
-			compatibilityVersion = "Xcode 3.2";
+			compatibilityVersion = "Xcode 8.0";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
