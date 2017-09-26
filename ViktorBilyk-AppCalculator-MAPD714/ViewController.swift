@@ -1,6 +1,6 @@
 //
 //  Assigment 1 Calculator App
-//  Version: 0.9 Advaced Calculations, refactoring
+//  Version: 0.9.5 RC Futher refactoring, PlusMinus logic added
 //
 //  Created by Viktor Bilyk on 2017-09-26.
 //  Copyright © 2017 Shifty Land LLC. All rights reserved.
@@ -29,6 +29,7 @@ class ViewController: UIViewController {
     var currentMathOperation:Int = 0 // selected ID of operation
     var isDot:Bool = false //is Dot pressed
     var isEqual:Bool = false //is equals pressed
+    var isInput:Bool = false //checks if input number is in progress
     
     //Label outlet
     @IBOutlet weak var calcResultLabel: UILabel! //displays calcResult on UI
@@ -57,18 +58,13 @@ class ViewController: UIViewController {
     //NumPad press handler
     @IBAction func numPadButtonPress(_ sender: UIButton) {
         
-        if isMath { //check if operation button pressed inorder to start recording new variable
+        if !isInput { //check if operation button pressed inorder to start recording new variable
             calcResultLabel.text = String(sender.tag-1)
+            isInput = true
             
         }
         else {
-            //check if in process of inputting number
-            if calcResultLabel.text == "0" {
-                calcResultLabel.text = String(sender.tag-1)
-            }
-            else {
-                calcResultLabel.text = calcResultLabel.text! + String(sender.tag-1)
-            }
+            calcResultLabel.text = calcResultLabel.text! + String(sender.tag-1)
         }
         onScreenNumber = Double(calcResultLabel.text!)!
     }
@@ -85,12 +81,10 @@ class ViewController: UIViewController {
                     firstOperand = calcResult
                     currentMathOperation = sender.tag
                     calcResultLabel.text = String(calcResult)
-                    isDot = false
                 }
                 else {
                     firstOperand = Double(calcResultLabel.text!)!
                     currentMathOperation = sender.tag
-                    isDot = false
                 }
             case 15, 16: //Square root and power to two operations
                 if !isEqual {//if equals not pressed continue chain otherwise calculate and show result
@@ -99,7 +93,6 @@ class ViewController: UIViewController {
                     firstOperand = calcResult
                     currentMathOperation = sender.tag
                     calcResultLabel.text = String(calcResult)
-                    isDot = false
                 }
                 else {
                     firstOperand = Double(calcResultLabel.text!)!
@@ -107,7 +100,6 @@ class ViewController: UIViewController {
                     calcResult = calculations(operandA: firstOperand, operandB: secondOperand)
                     firstOperand = calcResult
                     calcResultLabel.text = String(calcResult)
-                    isDot = false
                 }
             default:
                 calcResultLabel.text = "Error"
@@ -119,18 +111,24 @@ class ViewController: UIViewController {
             isDot = false
             isMath = true
         }
+    isInput = false //set flag to start input new number
+    isDot = false //reset dot flag for new number input
     }
     
     //PlusMinus operation
     @IBAction func plusMinusSwitch(_ sender: UIButton) {
+        onScreenNumber = -Double(calcResultLabel.text!)!
+        calcResultLabel.text = String(onScreenNumber)
     }
     
     //Dot button clicked
     @IBAction func dotPress(_ sender: UIButton) {
         
         if !isDot {// if dot is not pressed add dot otherwise do nothing
+            //check if number is actually integer, if not don't add the dot           
+            if (Double(calcResultLabel.text!)!).truncatingRemainder(dividingBy: 1) == 0 {
             calcResultLabel.text = calcResultLabel.text! + "."
-            isDot = true
+                isDot = true }
         }
     }
     
@@ -142,6 +140,7 @@ class ViewController: UIViewController {
             calcResultLabel.text = String(calcResult)
             isDot = false
             isEqual = true
+            isInput = false
         }
     }
     
@@ -154,6 +153,7 @@ class ViewController: UIViewController {
         isMath = false
         isDot = false
         isEqual = false
+        isInput = false
         
         //reset calculations
         calcResult = 0

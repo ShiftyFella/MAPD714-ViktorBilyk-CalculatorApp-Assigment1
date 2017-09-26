@@ -120,7 +120,7 @@
                                                             <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                         </state>
                                                         <connections>
-                                                            <action selector="plusMinusSwitch:" destination="BYZ-38-t0r" eventType="touchUpInside" id="QIC-hF-0wY"/>
+                                                            <action selector="plusMinusSwitch:" destination="BYZ-38-t0r" eventType="touchUpInside" id="nUo-8a-ZCv"/>
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" tag="15" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5NC-dF-oNh">
