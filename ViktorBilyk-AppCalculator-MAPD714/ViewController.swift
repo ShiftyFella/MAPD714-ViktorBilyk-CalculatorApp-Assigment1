@@ -1,6 +1,6 @@
 //
 //  Assigment 1 Calculator App
-//  Version: 0.3 Basic Calculator Logic
+//  Version: 0.4 Event Handlers for NumPad and Operations Created
 //
 //  Created by Viktor Bilyk on 2017-09-26.
 //  Copyright © 2017 Shifty Land LLC. All rights reserved.
@@ -44,5 +44,13 @@ class ViewController: UIViewController {
         return tempResult
     }
 
+    //NumPad press handler
+    @IBAction func numPadButtonPress(_ sender: UIButton) {
+    }
+    
+    //Operations button handler
+    @IBAction func operationsButtonClick(_ sender: UIButton) {
+    }
+    
 }
 
