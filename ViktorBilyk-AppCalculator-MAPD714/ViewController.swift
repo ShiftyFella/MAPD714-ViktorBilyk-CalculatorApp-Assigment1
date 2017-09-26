@@ -6,8 +6,8 @@
 //
 //  Date: September 26, 2017
 //
-//  Version: 1.0 Final Version, 
-//        {App Icon and SplashScreen Added [Using Royalty Free Stock Photos] }
+//  Version: 1.0.1 ,
+//        {Last minute fixes}
 //
 //  Supported Device: Universal, any Ipad or Iphone with iOS ver. 10.3
 //  Supported Orientations: Portrait and Landscape
@@ -26,6 +26,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        calcResultLabel.text = "0"
     }
 
     override func didReceiveMemoryWarning() {
