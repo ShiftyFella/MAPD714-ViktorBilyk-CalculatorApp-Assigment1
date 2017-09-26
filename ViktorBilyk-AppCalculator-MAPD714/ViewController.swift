@@ -1,6 +1,6 @@
 //
 //  Assigment 1 Calculator App
-//  Version: 0.6 Event Handlers for dot, equals
+//  Version: 0.7 NumPad, dot, AC logic created
 //
 //  Created by Viktor Bilyk on 2017-09-26.
 //  Copyright © 2017 Shifty Land LLC. All rights reserved.
@@ -26,6 +26,10 @@ class ViewController: UIViewController {
     var calcResult:Double = 0 // result of calculations
     var isMath:Bool = false // is Math operation pressed
     var currentMathOperation:Int = 0 // selected ID of operation
+    var isDot:Bool = false //is Dot pressed
+    
+    //Label outlet
+    @IBOutlet weak var calcResultLabel: UILabel! //displays calcResult on UI
     
     //function to do basic calculations
     func calculations () -> Double {
@@ -46,6 +50,20 @@ class ViewController: UIViewController {
 
     //NumPad press handler
     @IBAction func numPadButtonPress(_ sender: UIButton) {
+        
+        if isMath { //check if operation button pressed inorder to start recording new variable
+            calcResultLabel.text = String(sender.tag-1)
+            
+        }
+        else {
+            //check if in process of inputting number
+            if calcResultLabel.text == "0" {
+                calcResultLabel.text = String(sender.tag-1)
+            }
+            else {
+                calcResultLabel.text = calcResultLabel.text! + String(sender.tag-1)
+            }
+        }
     }
     
     //Operations button handler
@@ -58,6 +76,11 @@ class ViewController: UIViewController {
     
     //Dot button clicked
     @IBAction func dotPress(_ sender: UIButton) {
+        
+        if !isDot {// if dot is not pressed add dot otherwise do nothing
+            calcResultLabel.text = calcResultLabel.text! + "."
+            isDot = true
+        }
     }
     
     //Equals button pressed
@@ -66,6 +89,21 @@ class ViewController: UIViewController {
     
     //All Clear button pressed
     @IBAction func clearAllCalculator(_ sender: UIButton) {
+        
+        calcResultLabel.text = "0" //reset text in UI
+        
+        //reset all flags
+        isMath = false
+        isDot = false
+        
+        //reset calculations
+        calcResult = 0
+        firstOperand = 0
+        secondOperand = 0
+        
+        //reset state of calc
+        currentMathOperation = 0
+        
     }
     
     
