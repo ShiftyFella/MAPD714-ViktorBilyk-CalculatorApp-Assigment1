@@ -265,6 +265,9 @@
                                                         <state key="normal" title=".">
                                                             <color key="titleColor" red="0.40000000600000002" green="0.40000000600000002" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
                                                         </state>
+                                                        <connections>
+                                                            <action selector="dotPress:" destination="BYZ-38-t0r" eventType="touchUpInside" id="vvB-sW-9nI"/>
+                                                        </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2RH-Bb-DF4">
                                                         <rect key="frame" x="126" y="0.0" width="123" height="88"/>
@@ -284,6 +287,9 @@
                                                         <state key="normal" title="=">
                                                             <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                         </state>
+                                                        <connections>
+                                                            <action selector="equalsPress:" destination="BYZ-38-t0r" eventType="touchUpInside" id="txv-yN-est"/>
+                                                        </connections>
                                                     </button>
                                                 </subviews>
                                             </stackView>

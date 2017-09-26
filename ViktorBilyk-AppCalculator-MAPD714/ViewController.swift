@@ -1,6 +1,6 @@
 //
 //  Assigment 1 Calculator App
-//  Version: 0.5 Event Handlers for PlusMinus, Clear
+//  Version: 0.6 Event Handlers for dot, equals
 //
 //  Created by Viktor Bilyk on 2017-09-26.
 //  Copyright © 2017 Shifty Land LLC. All rights reserved.
@@ -54,6 +54,14 @@ class ViewController: UIViewController {
     
     //PlusMinus operation
     @IBAction func plusMinusSwitch(_ sender: UIButton) {
+    }
+    
+    //Dot button clicked
+    @IBAction func dotPress(_ sender: UIButton) {
+    }
+    
+    //Equals button pressed
+    @IBAction func equalsPress(_ sender: UIButton) {
     }
     
     //All Clear button pressed
