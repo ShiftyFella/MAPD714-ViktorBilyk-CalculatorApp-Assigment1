@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="12120" systemVersion="16G29" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="AgC-eL-Hgc">
+    <device id="watch38" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="watchOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="12029"/>
+    </dependencies>
+    <scenes>
+        <!--Interface Controller-->
+        <scene sceneID="aou-V4-d1y">
+            <objects>
+                <controller id="AgC-eL-Hgc" customClass="InterfaceController" customModule="WatchCalc" customModuleProvider="target">
+                    <items>
+                        <label width="1" alignment="left" text="325" textAlignment="right" id="65j-hK-VyP"/>
+                        <separator alignment="left" id="Zg7-tx-xKz"/>
+                        <group alignment="left" id="fPH-Bd-DEl">
+                            <items>
+                                <button width="32" height="30" alignment="left" title="1" id="GAu-Jc-Bnv"/>
+                                <button width="32" height="30" alignment="left" title="2" id="Nlt-9f-Phd"/>
+                                <button width="32" height="30" alignment="left" title="3" id="ngt-va-mMO"/>
+                                <button width="32" height="30" alignment="left" title="+" id="9kh-DG-F9Q">
+                                    <color key="backgroundColor" red="0.50196081400000003" green="0.0" blue="0.25098040700000002" alpha="1" colorSpace="calibratedRGB"/>
+                                </button>
+                            </items>
+                        </group>
+                        <group width="1" alignment="left" id="W4T-WG-Oaa">
+                            <items>
+                                <button width="32" height="30" alignment="left" title="4" id="hrI-Sa-FOK"/>
+                                <button width="32" height="30" alignment="left" title="5" id="Fg2-DQ-cph"/>
+                                <button width="32" height="30" alignment="left" title="6" id="5uN-rN-2GK"/>
+                                <button width="32" height="30" alignment="left" title="-" id="MjZ-zp-hs1">
+                                    <color key="backgroundColor" red="0.50196081400000003" green="0.0" blue="0.25098040700000002" alpha="1" colorSpace="calibratedRGB"/>
+                                </button>
+                            </items>
+                        </group>
+                        <group alignment="left" id="bv0-cZ-5XE">
+                            <items>
+                                <button width="32" height="30" alignment="left" title="7" id="onF-Sl-26I"/>
+                                <button width="32" height="30" alignment="left" title="8" id="2SL-Td-cSq"/>
+                                <button width="32" height="30" alignment="left" title="9" id="lKi-ow-I9k"/>
+                                <button width="32" height="30" alignment="left" title="*" id="rF4-3L-rfj">
+                                    <color key="backgroundColor" red="0.50196081400000003" green="0.0" blue="0.25098040700000002" alpha="1" colorSpace="calibratedRGB"/>
+                                </button>
+                            </items>
+                        </group>
+                        <group alignment="left" id="Gpv-Fq-O6W">
+                            <items>
+                                <button width="32" height="30" alignment="left" title="." id="fHv-bw-I3T"/>
+                                <button width="32" height="30" alignment="left" title="0" id="hVI-6b-RXT"/>
+                                <button width="32" height="30" alignment="left" title="=" id="5sB-1v-Sye">
+                                    <color key="backgroundColor" red="1" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                </button>
+                                <button width="32" height="30" alignment="left" title="/" id="9xI-Ni-NAF">
+                                    <color key="backgroundColor" red="0.50196081400000003" green="0.0" blue="0.25098040700000002" alpha="1" colorSpace="calibratedRGB"/>
+                                </button>
+                            </items>
+                        </group>
+                    </items>
+                </controller>
+            </objects>
+            <point key="canvasLocation" x="109" y="369"/>
+        </scene>
+        <!--Static Notification Interface Controller-->
+        <scene sceneID="AEw-b0-oYE">
+            <objects>
+                <notificationController id="YCC-NB-fut">
+                    <items>
+                        <label alignment="left" text="Alert Label" id="IdU-wH-bcW"/>
+                    </items>
+                    <notificationCategory key="notificationCategory" identifier="myCategory" id="JfB-70-Muf"/>
+                    <connections>
+                        <outlet property="notificationAlertLabel" destination="IdU-wH-bcW" id="JKC-fr-R95"/>
+                        <segue destination="4sK-HA-Art" kind="relationship" relationship="dynamicNotificationInterface" id="kXh-Jw-8B1"/>
+                    </connections>
+                </notificationController>
+            </objects>
+            <point key="canvasLocation" x="109" y="643"/>
+        </scene>
+        <!--Notification Controller-->
+        <scene sceneID="ZPc-GJ-vnh">
+            <objects>
+                <controller id="4sK-HA-Art" customClass="NotificationController" customModule="WatchCalc" customModuleProvider="target"/>
+            </objects>
+            <point key="canvasLocation" x="468" y="643"/>
+        </scene>
+    </scenes>
+</document>
